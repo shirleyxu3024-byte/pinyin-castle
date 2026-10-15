@@ -1,0 +1,16 @@
+{
+  "name": "拼读城堡 · 声母韵母手拉手",
+  "short_name": "拼读城堡",
+  "description": "面向小学一年级的两拼音节拼读练习：声母韵母配对、拼读确认、看图识词、跟读评分。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F2FBF4",
+  "theme_color": "#F2FBF4",
+  "icons": [
+    { "src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
