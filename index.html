@@ -345,6 +345,141 @@
                   background:linear-gradient(0deg,var(--bg) 65%,rgba(242,251,244,0));}
   .bottom-actions .btn{box-shadow:0 6px 0 var(--green-700),0 10px 22px rgba(46,158,79,.28);}
   .bottom-actions .btn:active{box-shadow:0 2px 0 var(--green-700);}
+
+  /* ---------- home quick bar ---------- */
+  .quick-bar{display:flex;gap:10px;margin:8px 0 16px;}
+  .quick-item{flex:1;background:#fff;border-radius:18px;padding:12px 8px;box-shadow:var(--shadow-sm);
+               display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .12s;}
+  .quick-item:active{transform:scale(.95);}
+  .quick-item .em{font-size:28px;}
+  .quick-item .lb{font-size:12px;font-weight:900;color:var(--green-700);}
+  .quick-item .val{font-size:11px;font-weight:800;color:var(--muted);}
+
+  /* ---------- pet display ---------- */
+  .pet-stage{background:linear-gradient(180deg,#EAF6FF,#D6EEFF);border-radius:22px;padding:20px 16px;
+             display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;overflow:hidden;}
+  .pet-stage.evolve0{background:linear-gradient(180deg,#FFF4E0,#FFE0B8);}
+  .pet-stage.evolve1{background:linear-gradient(180deg,#E8FBEC,#BFEFCF);}
+  .pet-stage.evolve2{background:linear-gradient(180deg,#E6F0FF,#BFD4FF);}
+  .pet-stage.evolve3{background:linear-gradient(180deg,#FFE9F2,#FFC2DA);}
+  .pet-stage.evolve4{background:linear-gradient(180deg,#FFF4C2,#FFE089);}
+  .pet-char{font-size:96px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.15));animation:bob 3s ease-in-out infinite;
+            position:relative;line-height:1;}
+  .pet-hat{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:36px;}
+  .pet-name{font-size:18px;font-weight:900;color:var(--ink);}
+  .pet-level{font-size:12px;font-weight:900;color:var(--muted);}
+  .pet-exp-bar{width:100%;height:10px;border-radius:99px;background:rgba(255,255,255,.6);overflow:hidden;margin-top:2px;}
+  .pet-exp-bar > i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--pink),var(--orange));
+                   transition:width .6s cubic-bezier(.22,1,.36,1);}
+  .pet-exp-text{font-size:11px;font-weight:900;color:var(--muted);align-self:flex-start;}
+
+  /* ---------- shop ---------- */
+  .shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .shop-item{background:#fff;border-radius:18px;padding:12px 10px;box-shadow:var(--shadow-sm);
+             display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;position:relative;
+             transition:transform .12s;}
+  .shop-item:active{transform:scale(.96);}
+  .shop-item.owned{opacity:.7;}
+  .shop-item.owned::after{content:"已拥有";position:absolute;top:8px;right:8px;background:var(--green-500);
+                          color:#fff;font-size:10px;font-weight:900;padding:2px 8px;border-radius:99px;}
+  .shop-item .em{font-size:40px;}
+  .shop-item .nm{font-size:13px;font-weight:900;color:var(--ink);line-height:1.3;}
+  .shop-item .ds{font-size:11px;font-weight:700;color:var(--muted);}
+  .shop-item .pr{font-size:13px;font-weight:900;color:var(--orange);margin-top:2px;}
+  .shop-item .pr::before{content:"💰 ";}
+
+  .shop-tabs{display:flex;gap:6px;margin-bottom:10px;}
+  .shop-tab{flex:1;padding:8px 6px;border-radius:14px;background:#fff;font-size:13px;font-weight:900;
+            color:var(--muted);text-align:center;box-shadow:var(--shadow-sm);}
+  .shop-tab.active{background:var(--green-500);color:#fff;}
+
+  /* ---------- profile ---------- */
+  .profile-head{background:linear-gradient(135deg,#FFF4D6,#FFE9A8);border-radius:22px;padding:18px 16px;
+                display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm);margin-bottom:12px;}
+  .avatar{width:64px;height:64px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+          font-size:34px;box-shadow:var(--shadow-sm);flex:0 0 64px;}
+  .profile-info{flex:1;min-width:0;}
+  .profile-info .nm{font-size:18px;font-weight:900;color:#8A6200;}
+  .profile-info .dt{font-size:12px;font-weight:700;color:#A97600;margin-top:2px;}
+
+  .form-row{display:flex;align-items:center;gap:10px;background:#fff;border-radius:16px;padding:12px 14px;
+            box-shadow:var(--shadow-sm);margin-bottom:8px;}
+  .form-row .lb{font-size:14px;font-weight:900;color:var(--ink);flex:0 0 72px;}
+  .form-row input[type="text"]{flex:1;border:none;outline:none;font-size:15px;font-weight:800;
+                               background:transparent;color:var(--ink);font-family:inherit;}
+  .form-row input[type="text"]::placeholder{color:#C5D9CD;}
+
+  .avatar-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:10px;background:#fff;
+               border-radius:16px;box-shadow:var(--shadow-sm);margin-bottom:10px;}
+  .avatar-opt{aspect-ratio:1;border-radius:50%;background:var(--green-100);display:flex;align-items:center;
+              justify-content:center;font-size:26px;transition:transform .12s;}
+  .avatar-opt:active{transform:scale(.9);}
+  .avatar-opt.on{background:var(--green-500);box-shadow:0 0 0 3px var(--green-300);}
+
+  .voice-row{display:flex;gap:8px;}
+  .voice-btn{flex:1;padding:14px 10px;border-radius:16px;background:#fff;box-shadow:var(--shadow-sm);
+             font-size:14px;font-weight:900;text-align:center;border:2px solid transparent;display:flex;
+             flex-direction:column;align-items:center;gap:4px;}
+  .voice-btn.on{border-color:var(--green-500);background:var(--green-100);color:var(--green-700);}
+  .voice-btn .em{font-size:26px;}
+
+  /* ---------- stage map ---------- */
+  .stage-card{background:#fff;border-radius:22px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px;
+              transition:transform .12s;position:relative;overflow:hidden;}
+  .stage-card:active{transform:scale(.98);}
+  .stage-card.locked{opacity:.5;filter:grayscale(.4);}
+  .stage-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+  .stage-num{font-size:12px;font-weight:900;color:var(--muted);}
+  .stage-name{font-size:18px;font-weight:900;color:var(--green-700);}
+  .stage-tag{font-size:11px;font-weight:900;padding:3px 9px;border-radius:99px;}
+  .stage-tag.done{background:#E4F8E9;color:var(--green-700);}
+  .stage-tag.ing{background:#FFF4D6;color:#A97600;}
+  .stage-tag.lock{background:#F0F0F0;color:#999;}
+  .stage-syls{display:flex;gap:6px;flex-wrap:wrap;}
+  .stage-dot{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+             font-size:16px;font-weight:900;background:#F2F2F2;color:#BBB;border:2px solid #E8E8E8;transition:all .3s;}
+  .stage-dot.ok{background:#E4F8E9;color:var(--green-700);border-color:var(--green-300);}
+  .stage-dot.curr{background:#FFF4D6;color:#A97600;border-color:var(--yellow);animation:hintPulse 1.6s ease infinite;}
+  .stage-stars{font-size:12px;font-weight:900;color:var(--muted);margin-top:6px;}
+
+  /* ---------- checkin ---------- */
+  .checkin-banner{background:linear-gradient(135deg,#FFE9A8,#FFD166);border-radius:22px;padding:14px 16px;
+                  display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm);margin-bottom:12px;}
+  .checkin-banner .em{font-size:34px;flex:0 0 auto;}
+  .checkin-banner .info{flex:1;min-width:0;}
+  .checkin-banner .t{font-size:15px;font-weight:900;color:#8A6200;}
+  .checkin-banner .s{font-size:11px;font-weight:700;color:#A97600;margin-top:2px;}
+  .checkin-banner button{background:#fff;color:#8A6200;font-size:13px;font-weight:900;padding:8px 14px;
+                         border-radius:14px;box-shadow:0 3px 0 #D89B12;flex:0 0 auto;}
+  .checkin-banner button:active{box-shadow:0 1px 0 #D89B12;transform:translateY(2px);}
+  .checkin-banner.done button{background:#E4F8E9;color:var(--green-700);box-shadow:0 3px 0 #B8D9C3;}
+
+  .checkin-row{display:flex;gap:6px;justify-content:space-between;margin-top:10px;}
+  .checkin-day{flex:1;aspect-ratio:1;border-radius:12px;background:rgba(255,255,255,.5);
+               display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+               font-size:10px;font-weight:900;color:#A97600;}
+  .checkin-day.on{background:#fff;color:var(--green-700);}
+  .checkin-day .em{font-size:16px;}
+
+  /* ---------- feed / pet actions ---------- */
+  .pet-actions{display:flex;gap:8px;margin-top:10px;}
+  .pet-act{flex:1;padding:10px 8px;border-radius:14px;background:rgba(255,255,255,.75);
+           font-size:12px;font-weight:900;color:var(--green-700);display:flex;flex-direction:column;
+           align-items:center;gap:2px;transition:transform .12s;}
+  .pet-act:active{transform:scale(.95);}
+  .pet-act .em{font-size:22px;}
+
+  /* ---------- tab bar (bottom nav for home) ---------- */
+  .tab-bar{display:flex;gap:6px;background:#fff;border-radius:20px;padding:6px;box-shadow:var(--shadow);
+           position:sticky;bottom:calc(4px + var(--safe-b));z-index:25;margin-top:8px;}
+  .tab-btn{flex:1;padding:8px 4px;border-radius:14px;display:flex;flex-direction:column;align-items:center;
+           gap:2px;font-size:11px;font-weight:900;color:var(--muted);transition:background .15s,color .15s;}
+  .tab-btn.on{background:var(--green-100);color:var(--green-700);}
+  .tab-btn .em{font-size:22px;}
+
+  /* ---------- sections for home tabs ---------- */
+  .home-section{display:none;}
+  .home-section.active{display:block;animation:pop .3s ease;}
 </style>
 </head>
 <body>
@@ -363,8 +498,8 @@
     <div class="hud-row">
       <button class="hud-btn" id="backBtn" aria-label="返回">←</button>
       <div class="hud-title" id="hudTitle">拼读城堡<small>声母韵母手拉手</small></div>
-      <div class="hud-pill" aria-label="获得星星">⭐ <span id="hudStars">0</span></div>
-      <button class="hud-btn parent" id="parentBtn" aria-label="家长中心">👪</button>
+      <div class="hud-pill" aria-label="积分">💰 <span id="hudPoints">0</span></div>
+      <button class="hud-btn" id="profileBtn" aria-label="我的">👤</button>
     </div>
     <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
   </header>
@@ -414,18 +549,101 @@ const SYLLABLE_LIBRARY = [
   { syllable:'mǐ',  initial:'m', final:'ǐ',  word:'米饭', pinyin:'mǐ fàn',  image:IMG.rice,    distractors:[IMG.mom, IMG.flower] },
   { syllable:'bǐ',  initial:'b', final:'ǐ',  word:'铅笔', pinyin:'qiān bǐ', image:IMG.pen,     distractors:[IMG.rice, IMG.cat] },
   { syllable:'pó',  initial:'p', final:'ó',  word:'婆婆', pinyin:'pó po',   image:IMG.grandma, distractors:[IMG.mom, IMG.flower] },
-  { syllable:'fēi', initial:'f', final:'ēi', word:'飞机', pinyin:'fēi jī',  image:IMG.plane,   distractors:[IMG.cat, IMG.flower] }
+  { syllable:'fēi', initial:'f', final:'ēi', word:'飞机', pinyin:'fēi jī',  image:IMG.plane,   distractors:[IMG.cat, IMG.flower] },
+  { syllable:'dà',  initial:'d', final:'à',  word:'大地', pinyin:'dà dì',   image:IMG.cat,     distractors:[IMG.pen, IMG.flower] },
+  { syllable:'tǔ',  initial:'t', final:'ǔ',  word:'土地', pinyin:'tǔ dì',   image:IMG.flower,  distractors:[IMG.rice, IMG.pen] },
+  { syllable:'nǚ',  initial:'n', final:'ǚ',  word:'女孩', pinyin:'nǚ hái',  image:IMG.mom,     distractors:[IMG.dad, IMG.rice] },
+  { syllable:'lù',  initial:'l', final:'ù',  word:'马路', pinyin:'mǎ lù',   image:IMG.plane,   distractors:[IMG.cat, IMG.pen] }
 ];
 
-/* ============ 3. 难度分级 ============ */
-const LEVEL_DEFS = [
-  { id:'low',  name:'低难度', tagline:'单韵母启蒙 · b p m 和 a o i', pick:['bà','mā','pá','mǐ'],
+/* ============ 2b. 阶段体系（第一/二/三/四/五阶段） ============ */
+const STAGE_DEFS = [
+  { id:'s1', name:'第一阶段 · 单韵母启蒙', num:'第一阶段', tag:'b p m 和 a i', pick:['bà','mā','pá','mǐ'],
     distractors:2, passStars:1, hintAfter:2 },
-  { id:'mid',  name:'中难度', tagline:'韵母变变变 · i o ei 也来啦', pick:['bǐ','pó','fēi','mā'],
-    distractors:3, passStars:2, hintAfter:2 },
-  { id:'high', name:'高难度', tagline:'拼读大挑战 · 声母韵母混合', pick:['bà','mā','bǐ','pó','fēi','mǐ'],
-    distractors:3, passStars:2, hintAfter:3 }
+  { id:'s2', name:'第二阶段 · 韵母变变变', num:'第二阶段', tag:'o u ei 来啦', pick:['pó','bǐ','fēi','mā'],
+    distractors:3, passStars:1, hintAfter:2 },
+  { id:'s3', name:'第三阶段 · 声母大挑战', num:'第三阶段', tag:'d t n l 登场', pick:['dà','tǔ','nǚ','lù'],
+    distractors:3, passStars:2, hintAfter:3 },
+  { id:'s4', name:'第四阶段 · 混合拼读', num:'第四阶段', tag:'全部大混合', pick:['bà','pá','fēi','dà','tǔ','lù'],
+    distractors:3, passStars:2, hintAfter:3 },
+  { id:'s5', name:'第五阶段 · 拼读大师', num:'第五阶段', tag:'终极挑战', pick:['mǐ','bǐ','pó','nǚ','fēi','lù'],
+    distractors:4, passStars:2, hintAfter:3 }
 ];
+
+/* 兼容旧的 LEVEL_DEFS 引用 */
+const LEVEL_DEFS = STAGE_DEFS;
+
+/* ============ 2c. 积分配置 ============ */
+const POINTS_CONFIG = {
+  practiceCorrect: 5,     // 拖拽配对正确
+  imagewordCorrect: 5,    // 看图识词正确
+  read1Star: 10,          // 跟读 1 星
+  read2Star: 15,          // 跟读 2 星
+  read3Star: 20,          // 跟读 3 星
+  stageComplete: 50,      // 通关一个阶段
+  dailyCheckin: 20,       // 每日打卡
+  checkinBonus7: 50,      // 连续 7 天额外奖励
+};
+
+// 自动打卡：完成学习题后调用，如果今天还没打卡就自动打卡
+function autoCheckin(){
+  if (!store.canCheckin()) return null;
+  const ci = store.checkin;
+  ci.days = ci.days || {};
+  const today = store.todayStr();
+  const y = new Date(); y.setDate(y.getDate() - 1);
+  const yKey = y.getFullYear() + '-' + (y.getMonth()+1) + '-' + y.getDate();
+  if (ci.lastDate === yKey) ci.streak++;
+  else ci.streak = 1;
+  ci.lastDate = today;
+  ci.days[today] = true;
+  store.saveCheckin(ci);
+  let bonus = POINTS_CONFIG.dailyCheckin;
+  let extra = '';
+  if (ci.streak % 7 === 0){
+    bonus += POINTS_CONFIG.checkinBonus7;
+    extra = ` · 连续 7 天额外 +${POINTS_CONFIG.checkinBonus7}`;
+  }
+  store.addPoints(bonus);
+  return { bonus, extra, streak: ci.streak };
+}
+
+/* ============ 2d. 商城物品 ============ */
+const SHOP_ITEMS = [
+  // 食物（喂养用，加成长值）
+  { id:'food_apple',   cat:'food', name:'苹果',     emoji:'🍎', price:10,  growth:10, desc:'脆脆的苹果，加 10 成长值' },
+  { id:'food_fish',    cat:'food', name:'小鱼干',   emoji:'🐟', price:20,  growth:25, desc:'香香的小鱼干，加 25 成长值' },
+  { id:'food_cake',    cat:'food', name:'小蛋糕',   emoji:'🍰', price:40,  growth:60, desc:'甜甜的蛋糕，加 60 成长值' },
+  { id:'food_star',    cat:'food', name:'星星糖',   emoji:'🌟', price:80,  growth:120,desc:'闪亮的星星糖，加 120 成长值' },
+  // 装扮（帽子类）
+  { id:'hat_crown',    cat:'hat',  name:'皇冠',     emoji:'👑', price:100, desc:'尊贵的小恐龙皇冠' },
+  { id:'hat_bow',      cat:'hat',  name:'蝴蝶结',   emoji:'🎀', price:60,  desc:'可爱的蝴蝶结' },
+  { id:'hat_cap',      cat:'hat',  name:'学士帽',   emoji:'🎓', price:80,  desc:'聪明的学士帽' },
+  { id:'hat_party',    cat:'hat',  name:'派对帽',   emoji:'🎉', price:40,  desc:'热闹的派对帽' },
+  // 背景（改变 pet 背景色）
+  { id:'bg_rainbow',   cat:'bg',   name:'彩虹背景', emoji:'🌈', price:120, desc:'梦幻的彩虹场景' },
+  { id:'bg_space',     cat:'bg',   name:'星空背景', emoji:'🌌', price:150, desc:'神秘的宇宙星空' },
+  { id:'bg_beach',     cat:'bg',   name:'海滩背景', emoji:'🏖️', price:100, desc:'阳光海滩场景' },
+];
+
+/* ============ 2e. 小恐龙进化阶段 ============ */
+const PET_STAGES = [
+  { level: 0, name:'恐龙蛋',   emoji:'🥚', expNeeded: 0,     evolveIdx: 0 },
+  { level: 1, name:'破壳啦',   emoji:'🐣', expNeeded: 50,    evolveIdx: 0 },
+  { level: 2, name:'小恐龙',   emoji:'🦕', expNeeded: 150,   evolveIdx: 1 },
+  { level: 3, name:'霸王龙',   emoji:'🦖', expNeeded: 350,   evolveIdx: 2 },
+  { level: 4, name:'飞天龙',   emoji:'🐉', expNeeded: 650,   evolveIdx: 3 },
+  { level: 5, name:'神龙',     emoji:'🐲', expNeeded: 1000,  evolveIdx: 4 },
+];
+
+/* ============ 2f. 头像库 ============ */
+const AVATAR_OPTIONS = ['🦕','🦖','🐲','🐉','🦊','🐼','🐨','🐯','🦁','🐸','🐵','🐰'];
+
+/* ============ 2g. 语音配置 ============ */
+const VOICE_PRESETS = {
+  girl: { label:'小女孩', emoji:'👧', pitch: 1.45, rate: 0.92, volume: 1.0 },
+  boy:  { label:'小男孩', emoji:'👦', pitch: 0.85, rate: 0.90, volume: 1.0 }
+};
 
 const TIPS = {
   1: '拼拼再听一次，跟着读：',
@@ -490,9 +708,10 @@ function speak(text, rate){
     try { speechSynthesis.cancel(); } catch(e){}
     const u = new SpeechSynthesisUtterance(say);
     u.lang = 'zh-CN';
-    u.rate = rate || 0.88;
-    u.pitch = 1.05;
-    u.volume = 1.0;
+    const preset = VOICE_PRESETS[store.voice] || VOICE_PRESETS.girl;
+    u.rate = rate || preset.rate;
+    u.pitch = preset.pitch;
+    u.volume = preset.volume;
     if (zhVoice) u.voice = zhVoice;
     let done = false;
     const fin = () => { if (!done) { done = true; resolve(); } };
@@ -544,10 +763,94 @@ const state = {
 const store = {
   get records(){ try { return JSON.parse(localStorage.getItem('pc_records') || '{}'); } catch(e){ return {}; } },
   saveRecords(r){ localStorage.setItem('pc_records', JSON.stringify(r)); },
-  get difficulty(){ return localStorage.getItem('pc_difficulty') || 'low'; },
-  setDifficulty(d){ localStorage.setItem('pc_difficulty', d); },
+  get stageId(){ return localStorage.getItem('pc_stageId') || 's1'; },
+  setStageId(id){ localStorage.setItem('pc_stageId', id); },
   get seenIntro(){ return localStorage.getItem('pc_seenIntro') === '1'; },
-  markIntro(){ localStorage.setItem('pc_seenIntro', '1'); }
+  markIntro(){ localStorage.setItem('pc_seenIntro', '1'); },
+
+  // 用户资料
+  get profile(){
+    try {
+      const raw = JSON.parse(localStorage.getItem('pc_profile') || 'null');
+      return Object.assign({ name:'小学霸', avatar:'🦖', voice:'girl' }, raw || {});
+    } catch(e){ return { name:'小学霸', avatar:'🦖', voice:'girl' }; }
+  },
+  saveProfile(p){ localStorage.setItem('pc_profile', JSON.stringify(p)); },
+  get voice(){ return this.profile.voice || 'girl'; },
+
+  // 积分
+  get points(){ return parseInt(localStorage.getItem('pc_points') || '0', 10); },
+  addPoints(n){
+    const v = Math.max(0, this.points + n);
+    localStorage.setItem('pc_points', String(v));
+    return v;
+  },
+
+  // 打卡
+  get checkin(){
+    try {
+      const raw = JSON.parse(localStorage.getItem('pc_checkin') || 'null');
+      return Object.assign({ lastDate:'', streak:0, days:{} }, raw || {});
+    } catch(e){ return { lastDate:'', streak:0, days:{} }; }
+  },
+  saveCheckin(c){ localStorage.setItem('pc_checkin', JSON.stringify(c)); },
+  todayStr(){
+    const d = new Date();
+    return d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+  },
+  canCheckin(){ return this.checkin.lastDate !== this.todayStr(); },
+
+  // 宠物
+  get pet(){
+    try {
+      const raw = JSON.parse(localStorage.getItem('pc_pet') || 'null');
+      return Object.assign({ name:'小拼拼', exp: 0, hat: null, bg: null }, raw || {});
+    } catch(e){ return { name:'小拼拼', exp: 0, hat: null, bg: null }; }
+  },
+  savePet(p){ localStorage.setItem('pc_pet', JSON.stringify(p)); },
+  petStage(){
+    const exp = this.pet.exp;
+    let s = PET_STAGES[0];
+    for (const st of PET_STAGES){ if (exp >= st.expNeeded) s = st; }
+    return s;
+  },
+  petExpInStage(){
+    const s = this.petStage();
+    const next = PET_STAGES.find(x => x.level === s.level + 1);
+    if (!next) return { cur: s.expNeeded, next: s.expNeeded, pct: 100 };
+    return {
+      cur: this.pet.exp - s.expNeeded,
+      next: next.expNeeded - s.expNeeded,
+      pct: Math.min(100, (this.pet.exp - s.expNeeded) / (next.expNeeded - s.expNeeded) * 100)
+    };
+  },
+  addExp(n){
+    const pet = this.pet;
+    const oldStage = this.petStage().level;
+    pet.exp = Math.max(0, pet.exp + n);
+    this.savePet(pet);
+    const newStage = this.petStage().level;
+    return { leveledUp: newStage > oldStage, newLevel: newStage };
+  },
+
+  // 商城拥有的物品
+  get inventory(){
+    try {
+      return JSON.parse(localStorage.getItem('pc_inv') || '[]');
+    } catch(e){ return []; }
+  },
+  saveInv(arr){ localStorage.setItem('pc_inv', JSON.stringify(arr)); },
+  owns(id){ return this.inventory.includes(id); },
+  buy(id){
+    const item = SHOP_ITEMS.find(x => x.id === id);
+    if (!item || this.owns(id)) return { ok:false, msg:'已拥有或不存在' };
+    if (this.points < item.price) return { ok:false, msg:'积分不够啦，多学习来赚积分吧～' };
+    this.addPoints(-item.price);
+    const inv = this.inventory;
+    inv.push(id);
+    this.saveInv(inv);
+    return { ok:true, item };
+  },
 };
 
 const task = () => state.level.syllables[state.currentIndex];
@@ -605,11 +908,11 @@ function floatHearts(anchor){
 }
 
 function syncHud(){
-  $('#hudStars').textContent = state.totalStars;
+  $('#hudPoints').textContent = store.points;
   if (state.step === 'intro'){
-    $('#hudTitle').innerHTML = `拼读城堡<small>学习地图</small>`;
+    $('#hudTitle').innerHTML = `拼读城堡<small>声母韵母手拉手</small>`;
   } else {
-    $('#hudTitle').innerHTML = `${state.level.name} · ${state.level.difficulty.name}<small>${state.level.tagline}</small>`;
+    $('#hudTitle').innerHTML = `${state.level.name}<small>${state.level.tag}</small>`;
   }
   let pct;
   if (state.step === 'intro') pct = 0;
@@ -735,14 +1038,39 @@ function zoneAt(x, y){
 }
 
 /* =========================================================================
-   页面 1 · IntroPage —— 学习地图 / 关卡进度
+   页面 1 · IntroPage —— 首页（学习 + 宠物 + 商城 + 我的 四个 Tab）
    ========================================================================= */
+let homeTab = 'learn';
+
+function petStageClass(){
+  const pet = store.pet;
+  if (pet.bg){
+    const bgItem = SHOP_ITEMS.find(x => x.id === pet.bg);
+    if (bgItem){
+      if (bgItem.id === 'bg_rainbow') return 'evolve3';
+      if (bgItem.id === 'bg_space') return 'evolve2';
+      if (bgItem.id === 'bg_beach') return 'evolve1';
+    }
+  }
+  const s = store.petStage();
+  return 'evolve' + s.evolveIdx;
+}
+
 renderers.intro = function(){
   const el = $('#screen-intro');
-  const recs = store.records;
+  const recs = store.records || {};
+  const profile = store.profile;
+  const canCheckin = store.canCheckin();
+  const ci = Object.assign({ lastDate:'', streak:0, days:{} }, store.checkin || {});
+  ci.days = ci.days || {};
+  const pet = Object.assign({ name:'小拼拼', exp:0, hat:null, bg:null }, store.pet || {});
+  const petS = store.petStage();
+  const petExp = store.petExpInStage();
+  const lastDate = ci.lastDate;
+  const streak = ci.streak;
 
-  // 计算每个难度的状态
-  const map = LEVEL_DEFS.map((def, idx) => {
+  // 各阶段状态
+  const stages = STAGE_DEFS.map((def, idx) => {
     const syls = def.pick.map(key => {
       const r = recs[key] || {};
       const ok = (r.bestStars || 0) >= def.passStars;
@@ -751,10 +1079,9 @@ renderers.intro = function(){
     const done = syls.filter(s => s.ok).length;
     const total = syls.length;
     const allDone = done === total;
-    // 解锁规则：第一个永远解锁；后面的需前一个全部完成
     let unlocked = true;
     if (idx > 0){
-      const prev = LEVEL_DEFS[idx - 1];
+      const prev = STAGE_DEFS[idx - 1];
       const prevOk = prev.pick.every(k => {
         const r = recs[k] || {};
         return (r.bestStars || 0) >= prev.passStars;
@@ -764,73 +1091,382 @@ renderers.intro = function(){
     return { def, syls, done, total, allDone, unlocked };
   });
 
-  // 总进度（以全部不重复音节计）
-  const allKeys = [...new Set(LEVEL_DEFS.flatMap(d => d.pick))];
-  const mastered = allKeys.filter(k => {
+  const totalSyls = [...new Set(STAGE_DEFS.flatMap(d => d.pick))];
+  const mastered = totalSyls.filter(k => {
     const r = recs[k]; return r && r.bestStars >= 1;
   }).length;
-  const totalPct = Math.round((mastered / Math.max(1, allKeys.length)) * 100);
+  const totalPct = Math.round((mastered / Math.max(1, totalSyls.length)) * 100);
 
-  // 默认选中第一个未完成且已解锁的关卡
-  const firstIncomplete = map.find(m => !m.allDone && m.unlocked) || map[0];
-  let selectedDiff = firstIncomplete.def.id;
+  // 最近 7 天打卡
+  const today = new Date();
+  const last7 = [];
+  for (let i = 6; i >= 0; i--){
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const key = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+    const wd = ['日','一','二','三','四','五','六'][d.getDay()];
+    last7.push({ key, wd, done: !!ci.days[key], isToday: i === 0 });
+  }
 
   el.innerHTML = `
-    <div class="map-hero">
-      <h1>拼读城堡</h1>
-      <p>声母韵母手拉手，一起闯关吧～</p>
-      <div class="overall-bar"><i style="width:${totalPct}%"></i></div>
-      <div class="overall-text">已掌握 ${mastered}/${allKeys.length} 个音节</div>
-    </div>
+    <!-- 学习 Tab -->
+    <div class="home-section ${homeTab==='learn'?'active':''}" data-tab="learn">
+      <div class="map-hero">
+        <h1>嗨，${profile.name}！</h1>
+        <p>今天也要和小恐龙一起学拼音哦～</p>
+        <div class="overall-bar"><i style="width:${totalPct}%"></i></div>
+        <div class="overall-text">已掌握 ${mastered}/${totalSyls.length} 个音节</div>
+      </div>
 
-    ${map.map(m => `
-      <div class="map-card ${m.unlocked ? '' : 'locked'}" data-diff="${m.def.id}">
-        <div class="map-head">
-          <div class="map-name">${m.def.name}</div>
-          <div class="map-status ${m.allDone ? 'done' : (m.done > 0 ? 'ing' : 'wait')}">
-            ${m.allDone ? '已完成 ✓' : (m.done > 0 ? `进行中 ${m.done}/${m.total}` : '未开始')}
+      <!-- 打卡条 -->
+      <div class="checkin-banner done">
+        <div class="em">${canCheckin ? '📖' : '✅'}</div>
+        <div class="info">
+          <div class="t">${canCheckin ? '今日学习得积分' : '今日已学习 ✓'}</div>
+          <div class="s">连续 ${streak} 天 · 完成一题自动打卡 +${POINTS_CONFIG.dailyCheckin} 积分</div>
+          <div class="checkin-row">
+            ${last7.map(d => `<div class="checkin-day ${d.done ? 'on' : ''}"><div class="em">${d.done ? '⭐' : '○'}</div>${d.wd}</div>`).join('')}
           </div>
         </div>
-        <div class="map-syls">
-          ${m.syls.map(s => `<div class="map-dot ${s.ok ? 'ok' : ''}">${s.key}</div>`).join('')}
+      </div>
+
+      <!-- 快捷入口 -->
+      <div class="quick-bar">
+        <div class="quick-item" data-quick="pet"><div class="em">${petS.emoji}</div><div class="lb">我的恐龙</div><div class="val">${petS.name}</div></div>
+        <div class="quick-item" data-quick="shop"><div class="em">🛒</div><div class="lb">积分商城</div><div class="val">${store.points} 积分</div></div>
+        <div class="quick-item" data-quick="profile"><div class="em">${profile.avatar}</div><div class="lb">个人中心</div><div class="val">${profile.name}</div></div>
+      </div>
+
+      <!-- 阶段列表 -->
+      <div style="font-size:15px;font-weight:900;color:var(--green-700);margin:4px 2px 10px">学习阶段</div>
+      ${stages.map((m, i) => `
+        <div class="stage-card ${m.unlocked ? '' : 'locked'}" data-stage="${m.def.id}">
+          <div class="stage-head">
+            <div>
+              <div class="stage-num">${m.def.num}</div>
+              <div class="stage-name">${m.def.name.replace(/^第.阶段 · /, '')}</div>
+            </div>
+            <div class="stage-tag ${m.allDone ? 'done' : (m.done > 0 ? 'ing' : 'lock')}">
+              ${m.allDone ? '已完成' : (m.done > 0 ? `进行中 ${m.done}/${m.total}` : (m.unlocked ? '未开始' : '🔒 未解锁'))}
+            </div>
+          </div>
+          <div class="stage-syls">
+            ${m.syls.map(s => `<div class="stage-dot ${s.ok ? 'ok' : ''}">${s.key}</div>`).join('')}
+          </div>
+          <div class="stage-stars">${m.total} 个音节 · ${m.def.distractors} 个干扰项</div>
+        </div>
+      `).join('')}
+
+      <div class="spacer"></div>
+    </div>
+
+    <!-- 宠物 Tab -->
+    <div class="home-section ${homeTab==='pet'?'active':''}" data-tab="pet">
+      <div class="map-hero">
+        <h1>我的小恐龙</h1>
+        <p>好好陪伴它，它会越长越大哦～</p>
+      </div>
+
+      <div class="pet-stage ${petStageClass()}">
+        <div class="pet-char">
+          ${pet.hat ? `<div class="pet-hat">${SHOP_ITEMS.find(x=>x.id===pet.hat)?.emoji || '🎩'}</div>` : ''}
+          ${petS.emoji}
+        </div>
+        <div class="pet-name">${pet.name}</div>
+        <div class="pet-level">${petS.name} · Lv.${petS.level}</div>
+        <div class="pet-exp-text">成长值 ${pet.exp} / ${PET_STAGES[petS.level+1] ? PET_STAGES[petS.level+1].expNeeded : 'MAX'}</div>
+        <div class="pet-exp-bar"><i style="width:${petExp.pct}%"></i></div>
+
+        <div class="pet-actions">
+          <button class="pet-act" id="feedBtn"><div class="em">🍎</div>喂它吃</button>
+          <button class="pet-act" id="playBtn"><div class="em">🎾</div>陪它玩</button>
+          <button class="pet-act" id="dressBtn"><div class="em">👒</div>装扮</button>
         </div>
       </div>
-    `).join('')}
 
-    <div class="spacer"></div>
-    <div class="bottom-actions">
-      <button class="btn" id="startMapBtn">开始闯关 ▶</button>
+      <div class="card" style="margin-top:12px">
+        <div style="font-size:14px;font-weight:900;color:var(--green-700);margin-bottom:8px">成长小知识</div>
+        <div class="sub">学习拼音可以获得积分，用积分在商城买食物喂给小恐龙，它就会快快长大！<br>
+          连续打卡 7 天还有额外奖励哦 🌟</div>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+
+    <!-- 商城 Tab -->
+    <div class="home-section ${homeTab==='shop'?'active':''}" data-tab="shop">
+      <div class="map-hero">
+        <h1>积分商城</h1>
+        <p>用学习赚来的积分，给小恐龙买礼物吧～</p>
+      </div>
+
+      <div class="shop-tabs">
+        <div class="shop-tab active" data-cat="food">🍎 食物</div>
+        <div class="shop-tab" data-cat="hat">👒 装扮</div>
+        <div class="shop-tab" data-cat="bg">🌈 背景</div>
+      </div>
+
+      <div class="shop-grid" id="shopGrid"></div>
+
+      <div class="spacer"></div>
+    </div>
+
+    <!-- 我的 Tab -->
+    <div class="home-section ${homeTab==='me'?'active':''}" data-tab="me">
+      <div class="map-hero">
+        <h1>个人中心</h1>
+        <p>你的拼读小天地</p>
+      </div>
+
+      <div class="profile-head">
+        <div class="avatar">${profile.avatar}</div>
+        <div class="profile-info">
+          <div class="nm">${profile.name}</div>
+          <div class="dt">💰 ${store.points} 积分 · 🌟 已掌握 ${mastered} 个音节</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:900;color:var(--green-700);margin:4px 2px 8px">选择头像</div>
+      <div class="avatar-grid" id="avatarGrid">
+        ${AVATAR_OPTIONS.map(a => `<div class="avatar-opt ${a===profile.avatar?'on':''}" data-avatar="${a}">${a}</div>`).join('')}
+      </div>
+
+      <div class="form-row">
+        <div class="lb">昵称</div>
+        <input type="text" id="nameInput" maxlength="8" value="${profile.name}" placeholder="给自己起个名字">
+      </div>
+
+      <div style="font-size:13px;font-weight:900;color:var(--green-700);margin:14px 2px 8px">拼读声音</div>
+      <div class="voice-row" id="voiceRow">
+        ${Object.entries(VOICE_PRESETS).map(([k,v]) => `
+          <div class="voice-btn ${profile.voice===k?'on':''}" data-voice="${k}">
+            <div class="em">${v.emoji}</div>${v.label}声音
+          </div>
+        `).join('')}
+      </div>
+
+      <div style="font-size:13px;font-weight:900;color:var(--green-700);margin:14px 2px 8px">学习阶段</div>
+      <div class="diff-row">
+        ${STAGE_DEFS.map((d, i) => `
+          <button class="diff-btn ${store.stageId===d.id?'active':''}" data-stage="${d.id}">
+            第${['一','二','三','四','五'][i]}阶段<small>${d.pick.length} 个音节</small>
+          </button>`).join('')}
+      </div>
+
+      <div style="font-size:13px;font-weight:900;color:var(--green-700);margin:14px 2px 8px">音节掌握情况</div>
+      <table class="rep-table">
+        <thead><tr><th>音节</th><th>阶段</th><th>最佳跟读</th><th>状态</th></tr></thead>
+        <tbody>
+          ${STAGE_DEFS.flatMap(d => d.pick.map(k => {
+            const r = recs[k] || { bestStars: 0 };
+            const passed = r.bestStars >= d.passStars;
+            return `<tr>
+              <td class="syl">${k}</td>
+              <td>${d.num}</td>
+              <td>${r.bestStars ? r.bestStars + ' ★' : '—'}</td>
+              <td><span class="tag ${passed ? 'ok' : 'need'}">${passed ? '已掌握' : '需复习'}</span></td>
+            </tr>`;
+          })).join('')}
+        </tbody>
+      </table>
+
+      <div class="pp-section">
+        <button class="btn ghost sm" id="resetRecords">清空学习记录</button>
+      </div>
+
+      <div class="spacer"></div>
+    </div>
+
+    <!-- 底部 Tab 栏 -->
+    <div class="tab-bar">
+      <div class="tab-btn ${homeTab==='learn'?'on':''}" data-tab="learn"><div class="em">🏠</div>学习</div>
+      <div class="tab-btn ${homeTab==='pet'?'on':''}" data-tab="pet"><div class="em">🦕</div>恐龙</div>
+      <div class="tab-btn ${homeTab==='shop'?'on':''}" data-tab="shop"><div class="em">🛒</div>商城</div>
+      <div class="tab-btn ${homeTab==='me'?'on':''}" data-tab="me"><div class="em">👤</div>我的</div>
     </div>
   `;
 
-  function highlightDiff(id){
-    el.querySelectorAll('.map-card').forEach(c => {
-      c.style.outline = c.dataset.diff === id ? '3px solid var(--green-500)' : 'none';
-      c.style.outlineOffset = c.dataset.diff === id ? '2px' : '0';
-    });
-    selectedDiff = id;
-  }
-  highlightDiff(selectedDiff);
-
-  el.querySelectorAll('.map-card').forEach(c => {
-    c.onclick = () => {
-      const id = c.dataset.diff;
-      const m = map.find(x => x.def.id === id);
-      if (!m.unlocked){ toast('先把前面的关卡完成，就能解锁这里啦～'); return; }
-      highlightDiff(id);
+  // Tab 切换
+  el.querySelectorAll('.tab-btn').forEach(b => {
+    b.onclick = () => {
+      homeTab = b.dataset.tab;
+      el.querySelectorAll('.tab-btn').forEach(x => x.classList.toggle('on', x.dataset.tab === homeTab));
+      el.querySelectorAll('.home-section').forEach(s => s.classList.toggle('active', s.dataset.tab === homeTab));
+      window.scrollTo(0, 0);
     };
   });
 
-  $('#startMapBtn').onclick = async () => {
-    store.markIntro();
-    sfx('start');
-    initLevel(selectedDiff);
-    say('出发咯！拼拼带你走进拼读城堡～', 3600);
-    await speak('欢迎来到拼读城堡', 0.9);
-    goToDemo();
+  // 快捷入口跳转
+  el.querySelectorAll('[data-quick]').forEach(q => {
+    q.onclick = () => {
+      const t = q.dataset.quick;
+      const tabMap = { pet:'pet', shop:'shop', profile:'me' };
+      const tab = tabMap[t];
+      homeTab = tab;
+      el.querySelectorAll('.tab-btn').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
+      el.querySelectorAll('.home-section').forEach(s => s.classList.toggle('active', s.dataset.tab === tab));
+    };
+  });
+
+  // 阶段卡片
+  el.querySelectorAll('.stage-card').forEach(c => {
+    c.onclick = () => {
+      const id = c.dataset.stage;
+      const m = stages.find(x => x.def.id === id);
+      if (!m.unlocked){ toast('先完成上一阶段就能解锁啦～'); return; }
+      store.setStageId(id);
+      initLevel(id);
+      sfx('start');
+      goToDemo();
+    };
+  });
+
+  // 宠物按钮
+  const feedBtn = $('#feedBtn');
+  if (feedBtn) feedBtn.onclick = () => { homeTab = 'shop'; renderers.intro();
+    setTimeout(()=>{ document.querySelector('[data-cat="food"]').click(); }, 50); };
+  const playBtn = $('#playBtn');
+  if (playBtn) playBtn.onclick = () => {
+    if (store.pet.exp < 10){ toast('先给小恐龙喂点吃的吧～'); return; }
+    sfx('ok');
+    const pet = store.pet;
+    toast(`和 ${pet.name} 玩得好开心！`, 'ok');
+  };
+  const dressBtn = $('#dressBtn');
+  if (dressBtn) dressBtn.onclick = () => { homeTab = 'shop'; renderers.intro();
+    setTimeout(()=>{ document.querySelector('[data-cat="hat"]').click(); }, 50); };
+
+  // 商城 Tab
+  let shopCat = 'food';
+  function renderShop(){
+    const grid = $('#shopGrid');
+    if (!grid) return;
+    const items = SHOP_ITEMS.filter(x => x.cat === shopCat);
+    grid.innerHTML = items.map(it => {
+      const owned = store.owns(it.id);
+      const equipped = (it.cat === 'hat' && store.pet.hat === it.id) ||
+                       (it.cat === 'bg' && store.pet.bg === it.id);
+      return `
+        <div class="shop-item ${owned ? 'owned' : ''}" data-id="${it.id}">
+          <div class="em">${it.emoji}</div>
+          <div class="nm">${it.name}</div>
+          <div class="ds">${it.desc}</div>
+          <div class="pr">${owned ? (equipped ? '使用中' : '点我装备') : it.price}</div>
+        </div>`;
+    }).join('');
+    grid.querySelectorAll('.shop-item').forEach(card => {
+      card.onclick = () => {
+        const id = card.dataset.id;
+        const item = SHOP_ITEMS.find(x => x.id === id);
+        if (store.owns(id)){
+          // 装备 / 卸下
+          const pet = store.pet;
+          if (item.cat === 'hat'){
+            pet.hat = (pet.hat === id) ? null : id;
+            toast(pet.hat ? `戴上了${item.name}！` : '取下了帽子', 'ok');
+          } else if (item.cat === 'bg'){
+            pet.bg = (pet.bg === id) ? null : id;
+            toast(pet.bg ? `换上了${item.name}！` : '换回默认背景', 'ok');
+          }
+          store.savePet(pet);
+          sfx('ok');
+          renderers.intro();
+        } else {
+          // 购买
+          const res = store.buy(id);
+          if (res.ok){
+            sfx('unlock'); confetti(18);
+            if (item.cat === 'food'){
+              const r = store.addExp(item.growth || 10);
+              toast(`买到了${item.name}！小恐龙成长 +${item.growth}`, 'ok');
+              if (r.leveledUp) {
+                setTimeout(() => {
+                  const s = store.petStage();
+                  toast(`🎉 进化啦！变成了${s.name}！`, 'ok');
+                  confetti(50); sfx('gate');
+                }, 600);
+              }
+            } else {
+              // 装扮/背景自动装备
+              const pet = store.pet;
+              if (item.cat === 'hat') pet.hat = id;
+              if (item.cat === 'bg') pet.bg = id;
+              store.savePet(pet);
+              toast(`买到了${item.name}！已自动穿上～`, 'ok');
+            }
+            syncHud();
+            renderers.intro();
+          } else {
+            sfx('soft');
+            toast(res.msg);
+          }
+        }
+      };
+    });
+  }
+  renderShop();
+  el.querySelectorAll('.shop-tab').forEach(t => {
+    t.onclick = () => {
+      shopCat = t.dataset.cat;
+      el.querySelectorAll('.shop-tab').forEach(x => x.classList.toggle('active', x === t));
+      renderShop();
+    };
+  });
+
+  // 我的 - 头像
+  el.querySelectorAll('.avatar-opt').forEach(a => {
+    a.onclick = () => {
+      const p = store.profile;
+      p.avatar = a.dataset.avatar;
+      store.saveProfile(p);
+      sfx('ok');
+      renderers.intro();
+    };
+  });
+
+  // 我的 - 昵称
+  const nameInput = $('#nameInput');
+  if (nameInput){
+    nameInput.onchange = () => {
+      const p = store.profile;
+      const v = nameInput.value.trim();
+      if (v){ p.name = v.slice(0, 8); store.saveProfile(p); toast('昵称已保存', 'ok'); }
+    };
+  }
+
+  // 我的 - 语音
+  el.querySelectorAll('[data-voice]').forEach(v => {
+    v.onclick = () => {
+      const p = store.profile;
+      p.voice = v.dataset.voice;
+      store.saveProfile(p);
+      sfx('ok');
+      speak('你好呀，我是你的拼读小伙伴！', 0.9);
+      renderers.intro();
+    };
+  });
+
+  // 我的 - 阶段切换
+  el.querySelectorAll('[data-stage]').forEach(b => {
+    b.onclick = () => {
+      store.setStageId(b.dataset.stage);
+      toast('已切换学习阶段', 'ok');
+      sfx('ok');
+      renderers.intro();
+    };
+  });
+
+  // 清空记录
+  const resetBtn = $('#resetRecords');
+  if (resetBtn) resetBtn.onclick = () => {
+    if (confirm('确定清空所有学习记录吗？')){
+      store.saveRecords({});
+      toast('记录已清空', 'ok');
+      renderers.intro();
+    }
   };
 
-  say('欢迎来到拼读城堡！选一个关卡开始闯关吧～', 4000);
+  say('欢迎来到拼读城堡！选一个阶段开始学习吧～', 4000);
 };
 
 /* =========================================================================
@@ -1014,7 +1650,9 @@ renderers.practice = function(){
       p.done = true; p.streak = 0;
       sfx('ok'); confetti(22); floatHearts(res);
       toast('配对成功，手拉手啦！', 'ok');
-      state.totalStars += 1; state.stickers.push('🌟'); syncHud();
+      state.totalStars += 1; state.stickers.push('🌟');
+      store.addPoints(POINTS_CONFIG.practiceCorrect);
+      syncHud();
       recordResult(t.syllable, { errors: p.errors });
       say(`${t.initial} 和 ${t.final} 手拉手，拼出 ${t.syllable}！`, 3000);
       const nb = $('#practiceNext');
@@ -1164,7 +1802,9 @@ renderers.imageword = function(){
       iw.done = true;
       btn.classList.add('right');
       sfx('ok'); confetti(22);
-      state.totalStars += 1; state.stickers.push('🎈'); syncHud();
+      state.totalStars += 1; state.stickers.push('🎈');
+      store.addPoints(POINTS_CONFIG.imagewordCorrect);
+      syncHud();
       recordResult(t.syllable, { errors: iw.wrong });
       // 中央卡片揭晓「词语图片 + 拼音」
       $('#promptCard').innerHTML = `
@@ -1338,7 +1978,18 @@ renderers.read = function(){
     if (mode === 'score'){
       if (rd.stars >= passStars){
         nb.classList.add('sun');
-        state.totalStars += rd.stars; state.stickers.push('🍀'); syncHud();
+        state.totalStars += rd.stars; state.stickers.push('🍀');
+        const pointMap = { 1: POINTS_CONFIG.read1Star, 2: POINTS_CONFIG.read2Star, 3: POINTS_CONFIG.read3Star };
+        store.addPoints(pointMap[rd.stars] || 5);
+        // 自动打卡
+        const checkRes = autoCheckin();
+        if (checkRes){
+          setTimeout(() => {
+            toast(`今日学习打卡成功！+${checkRes.bonus} 积分${checkRes.extra || ''}`, 'ok');
+            confetti(20);
+          }, 800);
+        }
+        syncHud();
         confetti(30); sfx('ok');
         toast(`得到 ${rd.stars} 颗星！`, 'ok');
         recordResult(t.syllable, { stars: rd.stars });
@@ -1461,16 +2112,18 @@ renderers.result = function(){
   });
 
   $('#continueBtn').onclick = () => {
-    const idx = LEVEL_DEFS.findIndex(d => d.id === state.level.difficulty.id);
-    if (idx < LEVEL_DEFS.length - 1){
-      const next = LEVEL_DEFS[idx + 1];
-      store.setDifficulty(next.id);
-      toast(`进入${next.name}：${next.tagline}`, 'ok');
+    const idx = STAGE_DEFS.findIndex(d => d.id === state.level.difficulty.id);
+    if (idx < STAGE_DEFS.length - 1){
+      const next = STAGE_DEFS[idx + 1];
+      store.setStageId(next.id);
+      store.addPoints(POINTS_CONFIG.stageComplete);
+      toast(`进入${next.num}：${next.tag}`, 'ok');
       initLevel(next.id);
       goToDemo();
     } else {
-      toast('已经是最高难度啦，试试复习巩固吧 🏰', 'ok');
-      say('你完成了全部难度！拼拼为你骄傲～', 4200);
+      store.addPoints(POINTS_CONFIG.stageComplete);
+      toast('已经是最高阶段啦，试试复习巩固吧 🏰', 'ok');
+      say('你完成了全部阶段！拼拼为你骄傲～', 4200);
     }
   };
 
@@ -1593,29 +2246,12 @@ function renderParentPanel(){
 }
 function closeParent(){ $('#parentModal').classList.remove('show'); }
 
-$('#parentBtn').onclick = () => {
-  $('#parentSheet').innerHTML = `
-    <div class="sheet-head"><h2>👪 家长中心</h2><button class="close-x" id="closeGate">✕</button></div>
-    <div class="hold-gate">
-      <div class="hold-btn" id="holdBtn"><div class="fill"></div><div class="em">👪</div></div>
-      <div class="sub" style="text-align:center">长按 2 秒进入<br>（避免孩子误触）</div>
-    </div>
-  `;
-  $('#parentModal').classList.add('show');
-  $('#closeGate').onclick = closeParent;
-
-  const btn = $('#holdBtn'), fill = btn.querySelector('.fill');
-  let timer = null, t0 = 0;
-  const stop = () => { clearInterval(timer); timer = null; fill.style.height = '0%'; };
-  btn.addEventListener('pointerdown', () => {
-    t0 = Date.now();
-    timer = setInterval(() => {
-      const pct = Math.min(100, (Date.now() - t0) / 2000 * 100);
-      fill.style.height = pct + '%';
-      if (pct >= 100){ stop(); renderParentPanel(); }
-    }, 50);
-  });
-  ['pointerup','pointerleave','pointercancel'].forEach(ev => btn.addEventListener(ev, stop));
+$('#profileBtn').onclick = () => {
+  if (state.step !== 'intro'){
+    go('intro');
+  }
+  homeTab = 'me';
+  renderers.intro();
 };
 
 /* ============ 启动 ============ */
@@ -1641,7 +2277,7 @@ $('#backBtn').onclick = () => {
   go(STEP_ORDER[Math.max(0, i - 1)]);
 };
 
-initLevel(store.difficulty);
+initLevel(store.stageId);
 go('intro');
 
 /* splash 自动消失 */
