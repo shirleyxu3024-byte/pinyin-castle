@@ -20,7 +20,11 @@
     --ink:#23402C; --muted:#6E8F7B; --line:#D7EEDF;
     --shadow:0 8px 24px rgba(31,122,61,.12);
     --shadow-sm:0 4px 12px rgba(31,122,61,.10);
-    --radius:24px; --safe-b:env(safe-area-inset-bottom,0px);
+    --radius:24px;
+    --safe-t:env(safe-area-inset-top,0px);
+    --safe-b:env(safe-area-inset-bottom,0px);
+    --safe-l:env(safe-area-inset-left,0px);
+    --safe-r:env(safe-area-inset-right,0px);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;}
@@ -33,11 +37,14 @@
   img{display:block;max-width:100%;}
 
   .app{max-width:520px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;
-       padding:0 16px calc(18px + var(--safe-b));position:relative;}
+       padding:calc(10px + var(--safe-t)) max(16px,var(--safe-l)) calc(18px + var(--safe-b)) max(16px,var(--safe-r));position:relative;}
 
   /* ---------- HUD ---------- */
-  .hud{position:sticky;top:0;z-index:20;padding:12px 0 10px;
+  .hud{position:sticky;top:0;z-index:20;padding:calc(8px + var(--safe-t)) 0 10px;
        background:linear-gradient(180deg,var(--bg) 72%,rgba(242,251,244,0));}
+  @supports (top:env(safe-area-inset-top)){
+    .hud{padding-top:calc(14px + var(--safe-t));}
+  }
   .hud-row{display:flex;align-items:center;gap:8px;}
   .hud-btn{width:42px;height:42px;flex:0 0 42px;border-radius:14px;background:#fff;
            box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;
@@ -297,9 +304,60 @@
             line-height:1.6;overflow-x:auto;white-space:pre;font-family:ui-monospace,Menlo,Consolas,monospace;}
   .pp-section{margin-top:16px;}
   .pp-section h3{margin:0 0 8px;font-size:14px;font-weight:900;color:var(--green-700);}
+
+  /* ---------- splash ---------- */
+  .splash{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .7s,visibility .7s;}
+  .splash.hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .splash-inner{display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .splash-icon{width:118px;height:118px;border-radius:28px;box-shadow:var(--shadow);animation:pop .55s ease .1s both;}
+  .splash-title{font-size:30px;font-weight:900;color:var(--green-700);}
+  .splash-sub{font-size:15px;font-weight:800;color:var(--muted);}
+  .splash-loader{display:flex;gap:7px;margin-top:12px;}
+  .splash-loader i{width:9px;height:9px;border-radius:50%;background:var(--green-300);animation:loaderBounce 1s ease infinite;}
+  .splash-loader i:nth-child(2){animation-delay:.15s;}
+  .splash-loader i:nth-child(3){animation-delay:.3s;}
+  @keyframes loaderBounce{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.5);opacity:1;background:var(--green-500);}}
+
+  /* ---------- map / progress ---------- */
+  .map-hero{text-align:center;padding:10px 0 6px;}
+  .map-hero h1{font-size:22px;font-weight:900;margin:0 0 4px;}
+  .map-hero p{margin:0;font-size:14px;font-weight:700;color:var(--muted);}
+  .overall-bar{height:14px;border-radius:99px;background:#DDF1E4;overflow:hidden;margin:10px 0 4px;}
+  .overall-bar > i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--green-500),var(--green-300));transition:width .6s cubic-bezier(.22,1,.36,1);}
+  .overall-text{font-size:12px;font-weight:900;color:var(--muted);text-align:center;margin-bottom:8px;}
+  .map-card{background:#fff;border-radius:22px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px;transition:transform .12s,opacity .2s;}
+  .map-card:active{transform:scale(.98);}
+  .map-card.locked{opacity:.55;}
+  .map-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+  .map-name{font-size:17px;font-weight:900;color:var(--green-700);}
+  .map-status{font-size:11px;font-weight:900;padding:4px 10px;border-radius:99px;}
+  .map-status.done{background:#E4F8E9;color:var(--green-700);}
+  .map-status.ing{background:#FFF4D6;color:#A97600;}
+  .map-status.wait{background:#F0F0F0;color:#999;}
+  .map-syls{display:flex;gap:8px;flex-wrap:wrap;}
+  .map-dot{width:56px;height:56px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;background:#F2F2F2;color:#BBB;border:2px solid #E8E8E8;transition:all .3s;position:relative;}
+  .map-dot.ok{background:#E4F8E9;color:var(--green-700);border-color:var(--green-300);}
+  .map-dot.ok::after{content:"✓";position:absolute;right:-4px;top:-4px;width:18px;height:18px;border-radius:50%;background:var(--green-500);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;}
+  .map-dot.curr{background:#FFF4D6;color:#A97600;border-color:var(--yellow);animation:hintPulse 1.6s ease infinite;}
+
+  /* ---------- bottom actions ---------- */
+  .bottom-actions{position:sticky;bottom:calc(8px + var(--safe-b));z-index:30;padding:14px 0 6px;margin-top:auto;
+                  background:linear-gradient(0deg,var(--bg) 65%,rgba(242,251,244,0));}
+  .bottom-actions .btn{box-shadow:0 6px 0 var(--green-700),0 10px 22px rgba(46,158,79,.28);}
+  .bottom-actions .btn:active{box-shadow:0 2px 0 var(--green-700);}
 </style>
 </head>
 <body>
+<!-- 启动页 -->
+<div class="splash" id="splash">
+  <div class="splash-inner">
+    <img class="splash-icon" src="assets/icon-180.png" alt="拼读城堡">
+    <div class="splash-title">拼读城堡</div>
+    <div class="splash-sub">声母韵母手拉手</div>
+    <div class="splash-loader"><i></i><i></i><i></i></div>
+  </div>
+</div>
+
 <div class="app">
   <header class="hud">
     <div class="hud-row">
@@ -417,7 +475,11 @@ const TTS_MAP = {
 let zhVoice = null;
 function pickVoice(){
   const vs = window.speechSynthesis ? speechSynthesis.getVoices() : [];
-  zhVoice = vs.find(v => /zh[-_]CN|zh[-_]Hans|Chinese/i.test(v.lang + v.name)) || null;
+  // 优先中国大陆普通话，排除港台语音
+  zhVoice = vs.find(v => /zh[-_]CN/i.test(v.lang) && !/TW|HK|台湾|香港/i.test(v.lang + v.name))
+         || vs.find(v => /Chinese.*China|中国大陆|普通话|Meijia|Ting/i.test(v.name))
+         || vs.find(v => /zh[-_]CN|zh[-_]Hans|Chinese/i.test(v.lang + v.name))
+         || null;
 }
 if (window.speechSynthesis) { pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
 
@@ -427,7 +489,10 @@ function speak(text, rate){
     const say = TTS_MAP[text] || text;
     try { speechSynthesis.cancel(); } catch(e){}
     const u = new SpeechSynthesisUtterance(say);
-    u.lang = 'zh-CN'; u.rate = rate || 0.78; u.pitch = 1.15;
+    u.lang = 'zh-CN';
+    u.rate = rate || 0.88;
+    u.pitch = 1.05;
+    u.volume = 1.0;
     if (zhVoice) u.voice = zhVoice;
     let done = false;
     const fin = () => { if (!done) { done = true; resolve(); } };
@@ -450,17 +515,17 @@ function beep(freq, start, dur, type, vol){
   const o = c.createOscillator(), g = c.createGain();
   o.type = type || 'sine'; o.frequency.setValueAtTime(freq, t);
   g.gain.setValueAtTime(0.0001, t);
-  g.gain.linearRampToValueAtTime(vol || 0.13, t + 0.02);
+  g.gain.linearRampToValueAtTime(vol || 0.28, t + 0.02);
   g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
   o.connect(g); g.connect(c.destination);
   o.start(t); o.stop(t + dur + 0.03);
 }
 function sfx(kind){
-  if (kind === 'start')  [523,659,784,1047].forEach((f,i) => beep(f, i*0.09, 0.3, 'triangle', 0.13));
-  else if (kind === 'ok')   { beep(880, 0, 0.16, 'sine', 0.14); beep(1175, 0.12, 0.26, 'sine', 0.12); }
-  else if (kind === 'soft') { beep(392, 0, 0.18, 'sine', 0.09); beep(311, 0.15, 0.24, 'sine', 0.08); }
-  else if (kind === 'gate') [392,523,659,784,1047].forEach((f,i) => beep(f, i*0.12, 0.55, 'triangle', 0.11));
-  else if (kind === 'unlock') [659,784,988,1319].forEach((f,i) => beep(f, i*0.1, 0.36, 'triangle', 0.12));
+  if (kind === 'start')  [523,659,784,1047].forEach((f,i) => beep(f, i*0.09, 0.3, 'triangle', 0.22));
+  else if (kind === 'ok')   { beep(880, 0, 0.16, 'sine', 0.24); beep(1175, 0.12, 0.26, 'sine', 0.22); }
+  else if (kind === 'soft') { beep(392, 0, 0.18, 'sine', 0.18); beep(311, 0.15, 0.24, 'sine', 0.16); }
+  else if (kind === 'gate') [392,523,659,784,1047].forEach((f,i) => beep(f, i*0.12, 0.55, 'triangle', 0.20));
+  else if (kind === 'unlock') [659,784,988,1319].forEach((f,i) => beep(f, i*0.1, 0.36, 'triangle', 0.22));
 }
 
 /* ============ 6. 状态机 ============ */
@@ -541,9 +606,13 @@ function floatHearts(anchor){
 
 function syncHud(){
   $('#hudStars').textContent = state.totalStars;
-  $('#hudTitle').innerHTML = `${state.level.name} · ${state.level.difficulty.name}<small>${state.level.tagline}</small>`;
+  if (state.step === 'intro'){
+    $('#hudTitle').innerHTML = `拼读城堡<small>学习地图</small>`;
+  } else {
+    $('#hudTitle').innerHTML = `${state.level.name} · ${state.level.difficulty.name}<small>${state.level.tagline}</small>`;
+  }
   let pct;
-  if (state.step === 'intro') pct = 5;
+  if (state.step === 'intro') pct = 0;
   else if (state.step === 'demo') pct = 15;
   else if (state.step === 'result') pct = 100;
   else {
@@ -666,59 +735,102 @@ function zoneAt(x, y){
 }
 
 /* =========================================================================
-   页面 1 · IntroPage —— 城堡入口
+   页面 1 · IntroPage —— 学习地图 / 关卡进度
    ========================================================================= */
 renderers.intro = function(){
   const el = $('#screen-intro');
-  const syls = state.level.syllables;
-  const initials = [...new Set(syls.map(s => s.initial))].slice(0, 4);
-  const finals   = [...new Set(syls.map(s => s.final))].slice(0, 4);
+  const recs = store.records;
+
+  // 计算每个难度的状态
+  const map = LEVEL_DEFS.map((def, idx) => {
+    const syls = def.pick.map(key => {
+      const r = recs[key] || {};
+      const ok = (r.bestStars || 0) >= def.passStars;
+      return { key, ok };
+    });
+    const done = syls.filter(s => s.ok).length;
+    const total = syls.length;
+    const allDone = done === total;
+    // 解锁规则：第一个永远解锁；后面的需前一个全部完成
+    let unlocked = true;
+    if (idx > 0){
+      const prev = LEVEL_DEFS[idx - 1];
+      const prevOk = prev.pick.every(k => {
+        const r = recs[k] || {};
+        return (r.bestStars || 0) >= prev.passStars;
+      });
+      unlocked = prevOk;
+    }
+    return { def, syls, done, total, allDone, unlocked };
+  });
+
+  // 总进度（以全部不重复音节计）
+  const allKeys = [...new Set(LEVEL_DEFS.flatMap(d => d.pick))];
+  const mastered = allKeys.filter(k => {
+    const r = recs[k]; return r && r.bestStars >= 1;
+  }).length;
+  const totalPct = Math.round((mastered / Math.max(1, allKeys.length)) * 100);
+
+  // 默认选中第一个未完成且已解锁的关卡
+  const firstIncomplete = map.find(m => !m.allDone && m.unlocked) || map[0];
+  let selectedDiff = firstIncomplete.def.id;
 
   el.innerHTML = `
-    <div class="hero">
-      <img class="hero-bg" src="${IMG.castle}" alt="拼音城堡">
-      <div class="hero-badge">${state.level.name}<small>${state.level.tagline}</small></div>
-      <img class="hero-guide" src="${IMG.guide}" alt="小恐龙向导拼拼">
+    <div class="map-hero">
+      <h1>拼读城堡</h1>
+      <p>声母韵母手拉手，一起闯关吧～</p>
+      <div class="overall-bar"><i style="width:${totalPct}%"></i></div>
+      <div class="overall-text">已掌握 ${mastered}/${allKeys.length} 个音节</div>
     </div>
 
-    <div class="preview">
-      <div class="preview-row">
-        <div class="preview-label">韵母<br>在后</div>
-        <div class="preview-cards">${finals.map(f => `<div class="pv fi">${f}</div>`).join('')}</div>
+    ${map.map(m => `
+      <div class="map-card ${m.unlocked ? '' : 'locked'}" data-diff="${m.def.id}">
+        <div class="map-head">
+          <div class="map-name">${m.def.name}</div>
+          <div class="map-status ${m.allDone ? 'done' : (m.done > 0 ? 'ing' : 'wait')}">
+            ${m.allDone ? '已完成 ✓' : (m.done > 0 ? `进行中 ${m.done}/${m.total}` : '未开始')}
+          </div>
+        </div>
+        <div class="map-syls">
+          ${m.syls.map(s => `<div class="map-dot ${s.ok ? 'ok' : ''}">${s.key}</div>`).join('')}
+        </div>
       </div>
-      <div class="preview-row">
-        <div class="preview-label">声母<br>在前</div>
-        <div class="preview-cards">${initials.map(i => `<div class="pv pi">${i}</div>`).join('')}</div>
-      </div>
-    </div>
-
-    <div class="card" style="padding:14px 16px">
-      <div style="font-size:14px;font-weight:900;color:var(--green-700);margin-bottom:5px">拼读小规则</div>
-      <div class="sub"><b>声母在前，韵母在后</b>，两个好朋友手拉手，就拼出一个音节啦！</div>
-    </div>
+    `).join('')}
 
     <div class="spacer"></div>
-    <div class="stack">
-      <button class="btn" id="startBtn">开始闯关 ▶</button>
-      <button class="btn ghost sm" id="skipBtn">我已经会啦，直接练习</button>
+    <div class="bottom-actions">
+      <button class="btn" id="startMapBtn">开始闯关 ▶</button>
     </div>
   `;
 
-  $('#startBtn').onclick = async () => {
+  function highlightDiff(id){
+    el.querySelectorAll('.map-card').forEach(c => {
+      c.style.outline = c.dataset.diff === id ? '3px solid var(--green-500)' : 'none';
+      c.style.outlineOffset = c.dataset.diff === id ? '2px' : '0';
+    });
+    selectedDiff = id;
+  }
+  highlightDiff(selectedDiff);
+
+  el.querySelectorAll('.map-card').forEach(c => {
+    c.onclick = () => {
+      const id = c.dataset.diff;
+      const m = map.find(x => x.def.id === id);
+      if (!m.unlocked){ toast('先把前面的关卡完成，就能解锁这里啦～'); return; }
+      highlightDiff(id);
+    };
+  });
+
+  $('#startMapBtn').onclick = async () => {
     store.markIntro();
     sfx('start');
+    initLevel(selectedDiff);
     say('出发咯！拼拼带你走进拼读城堡～', 3600);
-    await speak('欢迎来到拼读城堡', 0.85);
-    if (!store.seenIntro){
-      await speak('记住哦，声母在前，韵母在后，两个好朋友手拉手', 0.9);
-      say('第一次来？先看看拼拼怎么示范吧～', 3200);
-    }
+    await speak('欢迎来到拼读城堡', 0.9);
     goToDemo();
   };
-  $('#skipBtn').onclick = () => { store.markIntro(); hideGuide(); goToPractice(); };
 
-  if (!store.seenIntro) say('嗨！我是小恐龙拼拼，点「开始闯关」我带你玩拼读游戏～', 5000);
-  else say('欢迎回来！继续闯关吧～', 3000);
+  say('欢迎来到拼读城堡！选一个关卡开始闯关吧～', 4000);
 };
 
 /* =========================================================================
@@ -749,14 +861,14 @@ renderers.demo = function(){
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" style="justify-content:center">
         <button class="audio-btn" id="replayDemo">${waveIcon()}再示范一次</button>
       </div>
+      <div class="footnote" style="margin-top:2px">示范环节不评分，听清楚就好啦～</div>
     </div>
 
     <div class="spacer"></div>
-    <div class="stack">
-      <div class="footnote">示范环节不评分，听清楚就好啦～</div>
+    <div class="bottom-actions">
       <button class="btn" id="learnedBtn" disabled>我学会了 ▶</button>
     </div>
   `;
@@ -823,8 +935,9 @@ renderers.practice = function(){
         <p class="sub" style="margin:0">把 <b>声母</b> 拖到左边、<b>韵母</b> 拖到右边（也可以直接点一下）</p>
       </div>
 
-      <div style="display:flex;justify-content:center">
-        <button class="audio-btn" id="listenBtn">${waveIcon()}听一听目标音节</button>
+      <div style="display:flex;justify-content:center;gap:10px">
+        <button class="audio-btn" id="listenBtn">${waveIcon()}听一听</button>
+        <button class="audio-btn" id="hintBtn" style="background:#FFF7E3;color:#8A6200;box-shadow:inset 0 0 0 2px #FBE0A0">💡 提示</button>
       </div>
 
       <div class="prac">
@@ -851,9 +964,8 @@ renderers.practice = function(){
     </div>
 
     <div class="spacer"></div>
-    <div class="row">
-      <button class="btn ghost sm" id="hintBtn" style="flex:0 0 38%">💡 提示</button>
-      <button class="btn sm" id="practiceNext" disabled>下一步 ▶</button>
+    <div class="bottom-actions">
+      <button class="btn" id="practiceNext" disabled>下一步 ▶</button>
     </div>
   `;
 
@@ -972,15 +1084,12 @@ renderers.confirm = function(){
       </div>
 
       <button class="btn sun sm" id="listenAgain">${waveIcon()}再听一遍（还可听 ${MAX} 次）</button>
+      <div class="footnote">听熟了就可以进入下一步啦～</div>
     </div>
 
     <div class="spacer"></div>
-    <div class="stack">
-      <div class="footnote">想先自己读一读，也可以点「我来读」～</div>
-      <div class="row">
-        <button class="btn ghost sm" id="tryRead">🎤 我来读</button>
-        <button class="btn sm" id="nextStep">下一个 ▶</button>
-      </div>
+    <div class="bottom-actions">
+      <button class="btn" id="nextStep">下一个 ▶</button>
     </div>
   `;
 
@@ -1000,7 +1109,6 @@ renderers.confirm = function(){
     b.classList.remove('playing');
     renderListen();
   };
-  $('#tryRead').onclick = () => goToRead('try');
   $('#nextStep').onclick = () => goToImageWord();
   renderListen();
 
@@ -1034,8 +1142,8 @@ renderers.imageword = function(){
     </div>
 
     <div class="spacer"></div>
-    <div class="stack">
-      <div class="footnote" id="iwHint">选对啦，就能拿到一颗小星星 ⭐</div>
+    <div class="bottom-actions">
+      <div class="footnote" id="iwHint" style="margin-bottom:8px">选对啦，就能拿到一颗小星星 ⭐</div>
       <button class="btn" id="iwNext" disabled>下一步 ▶</button>
     </div>
   `;
@@ -1135,9 +1243,11 @@ renderers.read = function(){
     </div>
 
     <div class="spacer"></div>
-    <div class="row">
-      <button class="btn ghost sm" id="retryBtn" disabled>再读一次</button>
-      <button class="btn sm" id="readNext" disabled>${mode === 'try' ? '回到拼读台' : '下一个音节 ▶'}</button>
+    <div class="bottom-actions">
+      <div class="row">
+        <button class="btn ghost sm" id="retryBtn" disabled>再读一次</button>
+        <button class="btn sm" id="readNext" disabled>${mode === 'try' ? '回到拼读台' : '下一个音节 ▶'}</button>
+      </div>
     </div>
   `;
 
@@ -1340,13 +1450,9 @@ renderers.result = function(){
     </div>
 
     <div class="spacer"></div>
-    <div class="stack">
-      <div class="footnote">只看自己的进步，不和别人比排名哦～<br>家长可在右上角 👪 查看掌握情况与复习建议</div>
+    <div class="bottom-actions">
+      <div class="footnote" style="margin-bottom:8px">只看自己的进步，不和别人比排名哦～<br>家长可在右上角 👪 查看掌握情况</div>
       <button class="btn sun" id="continueBtn">继续闯关 ▶</button>
-      <div class="row">
-        <button class="btn ghost sm" id="reviewBtn">复习刚才的音节</button>
-        <button class="btn ghost sm" id="homeBtn">返回城堡</button>
-      </div>
     </div>
   `;
 
@@ -1360,21 +1466,13 @@ renderers.result = function(){
       const next = LEVEL_DEFS[idx + 1];
       store.setDifficulty(next.id);
       toast(`进入${next.name}：${next.tagline}`, 'ok');
-      startLevel(next.id);
+      initLevel(next.id);
+      goToDemo();
     } else {
       toast('已经是最高难度啦，试试复习巩固吧 🏰', 'ok');
       say('你完成了全部难度！拼拼为你骄傲～', 4200);
     }
   };
-  $('#reviewBtn').onclick = () => {
-    if (!state.reviewList.length){ toast('本关没有需要复习的音节 🎉', 'ok'); return; }
-    state.reviewMode = true;
-    state.reviewQueue = state.reviewList.slice();
-    const idx = syls.findIndex(s => s.syllable === state.reviewQueue[0]);
-    state.currentIndex = idx >= 0 ? idx : 0;
-    goToDemo();
-  };
-  $('#homeBtn').onclick = () => { hideGuide(); go('intro'); };
 
   // 城堡开门动画
   const gate = $('#gate');
@@ -1521,7 +1619,7 @@ $('#parentBtn').onclick = () => {
 };
 
 /* ============ 启动 ============ */
-function startLevel(diffId){
+function initLevel(diffId){
   const def = LEVEL_DEFS.find(d => d.id === diffId) || LEVEL_DEFS[0];
   state.level = buildLevel(def);
   state.currentIndex = 0;
@@ -1530,6 +1628,9 @@ function startLevel(diffId){
   state.reviewMode = false; state.reviewQueue = [];
   state.sub = { imageword:false, read:false };
   state.practice = state.confirm = state.imageword = state.read = null;
+}
+function startLevel(diffId){
+  initLevel(diffId);
   go('intro');
 }
 
@@ -1540,7 +1641,13 @@ $('#backBtn').onclick = () => {
   go(STEP_ORDER[Math.max(0, i - 1)]);
 };
 
-startLevel(store.difficulty);
+initLevel(store.difficulty);
+go('intro');
+
+/* splash 自动消失 */
+window.addEventListener('load', () => {
+  setTimeout(() => { $('#splash').classList.add('hide'); }, 1400);
+});
 
 /* ============ PWA 离线缓存 ============ */
 if ('serviceWorker' in navigator) {
